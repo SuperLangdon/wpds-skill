@@ -1,0 +1,1067 @@
+---
+title: "Navigation Menu"
+description: "A group of text links used for navigating between related pages or individual sections within a page."
+sourceUrl: "https://build.washingtonpost.com/components/navigation-menu"
+---
+
+# Navigation Menu
+
+---
+
+## Anatomy
+
+1. Menu link (text label / trigger)
+2. Submenu indicator
+3. Active state (bold)
+
+---
+
+## Options
+
+### Orientation
+
+Navigation menu supports both `horizontal` and `vertical` layout orientations. In `horizontal` orientation, menu links are **baseline-aligned**, ordered from **left to right**. In `vertical` orientation, menu links are **left-aligned**, ordered from **top to bottom**.
+
+```jsx
+<Box css={{ display: "flex", gap: "$100", height: "210px" }}>
+  <NavigationMenu.Root orientation="horizontal">
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Link href="#">Horizontal 1</NavigationMenu.Link>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Link href="#">Horizontal 2</NavigationMenu.Link>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Horizontal 3`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Option</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Link href="#">Horizontal 4</NavigationMenu.Link>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Link href="#">Horizontal 5</NavigationMenu.Link>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root orientation="vertical">
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Link href="#">Vertical 1</NavigationMenu.Link>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Link href="#">Vertical 2</NavigationMenu.Link>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Vertical 3`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-270deg)" },
+            }}
+          >
+            <ChevronRight />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Option</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Link href="#">Vertical 4</NavigationMenu.Link>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Link href="#">Vertical 5</NavigationMenu.Link>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+</Box>
+```
+
+### Submenus
+
+Navigation menu supports one level of sub-navigation.
+
+```jsx
+<Box css={{ height: "210px", display: "flex" }}>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>{`Ohio`}</NavigationMenu.Trigger>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>{`Rhode Island`}</NavigationMenu.Trigger>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>{`Wisconsin`}</NavigationMenu.Trigger>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`California`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Oakland</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">{`San Francisco`}</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Los Angeles</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">San Diego</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Texas`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Austin</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Houston</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Dallas</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">El Paso</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+</Box>
+```
+
+---
+
+## Behavior
+
+### Hover
+
+Menu links change color to `$accessible` on hover. Submenu links display background color `$faint` on hover.
+
+```jsx
+<Box css={{ height: "210px", display: "flex" }}>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Fruit`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Apple</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Orange</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Banana</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Pineapple</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Vegetable`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Broccoli</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Carrot</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Cucumber</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Protein`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Fish</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Chicken</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Beef</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Lamb</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Pork</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Carbohydrate`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">White Bread</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Brown Rice</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Oats</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Quinoa</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+</Box>
+```
+
+### Active
+
+Any menu link can be set to active` to indicate the page or section currently in view. Active links are rendered in font-weight **bold**.
+
+```jsx
+<Box css={{ height: "210px", display: "flex" }}>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Fruit`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Apple</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link
+                  href="#"
+                  active
+                >{`Orange`}</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Banana</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Pineapple</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Vegetable`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Broccoli</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Carrot</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Cucumber</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Submenu Link</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Protein`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Fish</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Chicken</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Beef</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Lamb</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Pork</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Carbohydrate`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">White Bread</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Brown Rice</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Oats</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Quinoa</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+</Box>
+```
+
+### Disabled
+
+A menu (or submenu) link can be set to `disabled`, according to the user’s current context and relevance of options.
+
+```jsx
+<Box css={{ height: "210px", display: "flex" }}>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger disabled>
+          {`Fruit`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Apple</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Orange</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Banana</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Pineapple</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Vegetable`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Broccoli</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Carrot</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Cucumber</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Submenu Link</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Protein`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Fish</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Chicken</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Beef</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Lamb</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Pork</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Carbohydrate`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">White Bread</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Brown Rice</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Oats</NavigationMenu.Link>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Quinoa</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+</Box>
+```
+
+### Overflow
+
+For submenus containing a large number of links, define a **max-height** and set the container to `scroll` to allow users to access additional items.
+
+```jsx
+<NavigationMenu.Root>
+  <NavigationMenu.List
+    css={{ display: "flex", marginRight: "100px", marginBottom: "100px" }}
+  >
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger icon="left">
+        {`Fruit`}
+        <Icon
+          label=""
+          css={{
+            transition: "transform $fast $inOut",
+            "[data-state=open] &": { transform: "rotate(-180deg)" },
+          }}
+        >
+          <ChevronDown />
+        </Icon>
+      </NavigationMenu.Trigger>
+      <NavigationMenu.Content css={{ maxHeight: "130px" }}>
+        <NavigationMenu.Sub orientation="vertical">
+          <NavigationMenu.List>
+            <NavigationMenu.Item>
+              <NavigationMenu.Link href="#">Apples</NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item>
+              <NavigationMenu.Link href="#">Bananas</NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item>
+              <NavigationMenu.Link href="#">Oranges</NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item>
+              <NavigationMenu.Link href="#">Pears</NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item>
+              <NavigationMenu.Link href="#">Grapes</NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item>
+              <NavigationMenu.Link href="#">Lemons</NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item>
+              <NavigationMenu.Link href="#">Limes</NavigationMenu.Link>
+            </NavigationMenu.Item>
+          </NavigationMenu.List>
+        </NavigationMenu.Sub>
+      </NavigationMenu.Content>
+    </NavigationMenu.Item>
+  </NavigationMenu.List>
+</NavigationMenu.Root>
+```
+
+---
+
+## Guidance
+
+### Number of menu items
+
+For primary navigation, the maximum number of menu links recommended is **eight (8)**. If your use case requires more than 8 menu links, re-evaluate your navigation hierarchy to make use of submenus, or consider using a different component.
+
+```jsx
+<Box css={{ display: "flex" }}>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>Election 2024</NavigationMenu.Trigger>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>Midterms 2022</NavigationMenu.Trigger>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>Senate</NavigationMenu.Trigger>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>House</NavigationMenu.Trigger>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>Governors</NavigationMenu.Trigger>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>
+          {`Results by state`}
+          <Icon
+            label=""
+            css={{
+              transition: "transform $fast $inOut",
+              "[data-state=open] &": { transform: "rotate(-180deg)" },
+            }}
+          >
+            <ChevronDown />
+          </Icon>
+        </NavigationMenu.Trigger>
+        <NavigationMenu.Content css={{ maxHeight: "130px" }}>
+          <NavigationMenu.Sub orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Alabama</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Alaska</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Arizona</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Arkansas</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">California</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Colorado</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Connecticut</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Florida</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Georgia</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Hawaii</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Idaho</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Illinois</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Indiana</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Iowa</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Kansas</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Kentucky</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Maine</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Maryland</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Alabama</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">
+                  Massachusetts
+                </NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Michigan</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Minnesota</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Mississippi</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Missouri</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Nebraska</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">Nevada</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">
+                  New Hampshire
+                </NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">New Jersey</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">New Mexico</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">New York</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">
+                  North Carolina
+                </NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+            <NavigationMenu.List>
+              <NavigationMenu.Item>
+                <NavigationMenu.Link href="#">North Dakota</NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Sub>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>Democracy in America</NavigationMenu.Trigger>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+</Box>
+```
+
+---
+
+## Accessibility
+
+### Keyboard navigation
+
+When navigation menu is in focus, links can be traversed using **left**, **right**, **up** and **down** arrow keys, or **tab** / **shift+tab**. Pressing the **enter** key executes a click function, which will navigate the user to the selected link. Links containing a submenu can be accessed by focusing the link and pressing **space** bar to toggle display of the submenu. Pressing the **esc** key exits the submenu and moves focus back to the parent link / trigger.
+
+---
+
+## API Reference
+
+## Props
+
+#### NavigationMenuRoot
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `children` | `ReactNode` | No | — | Any React node may be used as a child to allow for formatting |
+| `orientation` | `Orientation` | No | — |  |
+| `dir` | `Direction` | No | — |  |
+| `value` | `string` | No | — |  |
+| `defaultValue` | `string` | No | — |  |
+| `asChild` | `boolean` | No | — |  |
+| `onValueChange` | `(value: string) => void` | No | — |  |
+| `delayDuration` | `number` | No | — | The duration from when the pointer enters the trigger until the tooltip gets opened. @defaultValue 200 |
+| `skipDelayDuration` | `number` | No | — | How much time a user has to enter another trigger without incurring a delay again. @defaultValue 300 |
+| `css` | `CSS` | No | — | WPDS provides a css prop for overriding styles easily. It’s like the style attribute, but it supports tokens, media queries, nesting and token-aware values. All WPDS Components include a css prop. Use it to pass in overrides. |
+
+#### NavigationMenuList
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `children` | `ReactNode` | No | — | Any React node may be used as a child to allow for formatting |
+| `asChild` | `boolean` | No | — |  |
+| `css` | `{} & { alignContent?: AlignContent \| Globals \| ScaleValue \| Index; alignItems?: AlignItems \| Globals \| ScaleValue \| Index; ... 426 more ...; vectorEffect?: VectorEffect \| ... 2 more ... \| Index; } & ... 7 more ... & { ...; }` | No | — | WPDS provides a css prop for overriding styles easily. It’s like the style attribute, but it supports tokens, media queries, nesting and token-aware values. All WPDS Components include a css prop. Use it to pass in overrides. |
+
+#### NavigationMenuItem
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `children` | `ReactNode` | No | — | Any React node may be used as a child to allow for formatting |
+| `value` | `string` | No | — |  |
+| `asChild` | `boolean` | No | — |  |
+| `css` | `CSS` | No | — | WPDS provides a css prop for overriding styles easily. It’s like the style attribute, but it supports tokens, media queries, nesting and token-aware values. All WPDS Components include a css prop. Use it to pass in overrides. |
+
+#### NavigationMenuLink
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `children` | `ReactNode` | No | — | Any React node may be used as a child to allow for formatting |
+| `onSelect` | `(event: Event) => void` | No | — |  |
+| `asChild` | `boolean` | No | — |  |
+| `css` | `{} & { alignContent?: AlignContent \| Globals \| ScaleValue \| Index; alignItems?: AlignItems \| Globals \| ScaleValue \| Index; ... 426 more ...; vectorEffect?: VectorEffect \| ... 2 more ... \| Index; } & ... 7 more ... & { ...; }` | No | — | WPDS provides a css prop for overriding styles easily. It’s like the style attribute, but it supports tokens, media queries, nesting and token-aware values. All WPDS Components include a css prop. Use it to pass in overrides. |
+| `active` | `boolean` | No | — |  |
+
+#### NavigationMenuTrigger
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `children` | `ReactNode` | No | — | Any React node may be used as a child |
+| `asChild` | `boolean` | No | — |  |
+| `css` | `{} & { alignContent?: AlignContent \| Globals \| ScaleValue \| Index; alignItems?: AlignItems \| Globals \| ScaleValue \| Index; ... 426 more ...; vectorEffect?: VectorEffect \| ... 2 more ... \| Index; } & ... 7 more ... & { ...; }` | No | — | WPDS provides a css prop for overriding styles easily. It’s like the style attribute, but it supports tokens, media queries, nesting and token-aware values. All WPDS Components include a css prop. Use it to pass in overrides. |
+
+#### NavigationMenuContent
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `children` | `ReactNode` | No | — | Any React node may be used as a child to allow for formatting |
+| `asChild` | `boolean` | No | — |  |
+| `css` | `{} & { alignContent?: AlignContent \| Globals \| ScaleValue \| Index; alignItems?: AlignItems \| Globals \| ScaleValue \| Index; ... 426 more ...; vectorEffect?: VectorEffect \| ... 2 more ... \| Index; } & ... 7 more ... & { ...; }` | No | — | WPDS provides a css prop for overriding styles easily. It’s like the style attribute, but it supports tokens, media queries, nesting and token-aware values. All WPDS Components include a css prop. Use it to pass in overrides. |
+| `onEscapeKeyDown` | `(event: KeyboardEvent) => void` | No | — | Event handler called when the escape key is down. Can be prevented. |
+| `onPointerDownOutside` | `(event: PointerDownOutsideEvent) => void` | No | — | Event handler called when the a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. |
+| `onFocusOutside` | `(event: FocusOutsideEvent) => void` | No | — | Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented. |
+| `onInteractOutside` | `(event: PointerDownOutsideEvent \| FocusOutsideEvent) => void` | No | — | Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown` event happens outside or focus moves outside of it. Can be prevented. |
+| `forceMount` | `true` | No | — | Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. |
+| `referenceElement` | `HTMLButtonElement` | No | — | Trigger dom element used for positioning |
+| `side` | `"bottom" \| "left" \| "right" \| "top"` | No | bottom | The preferred side of the trigger to render against when open. |
+| `align` | `"center" \| "end" \| "start"` | No | start | The preferred alignment against the anchor. |
+| `popperOptions` | `Omit<Partial<Options>, "modifiers"> & { createPopper?: <TModifier extends Partial<Modifier<any, any>>>(reference: Element \| VirtualElement, popper: HTMLElement, options?: Partial<...>) => Instance; modifiers?: readonly Partial<...>[]; }` | No | — | Popper options object to pass to internal popper |
+
+#### NavigationMenuSub
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `children` | `ReactNode` | No | — | Any React node may be used as a child to allow for formatting |
+| `orientation` | `Orientation` | No | — |  |
+| `value` | `string` | No | — |  |
+| `defaultValue` | `string` | No | — |  |
+| `asChild` | `boolean` | No | — |  |
+| `onValueChange` | `(value: string) => void` | No | — |  |
+| `css` | `CSS` | No | — | WPDS provides a css prop for overriding styles easily. It’s like the style attribute, but it supports tokens, media queries, nesting and token-aware values. All WPDS Components include a css prop. Use it to pass in overrides. |
+
+```jsx
+``
+```

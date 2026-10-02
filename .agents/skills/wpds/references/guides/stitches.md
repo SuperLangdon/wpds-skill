@@ -1,0 +1,48 @@
+---
+title: "Why are we using Stitches for WPDS?"
+description: "Learn about our choice of using Stitches for WPDS."
+sourceUrl: "https://build.washingtonpost.com/resources/guides/stitches"
+---
+
+# Why are we using Stitches for WPDS?
+
+---
+
+## History
+
+Our journey to Stitches began last year in January with an open discussion on [our community issues board](https://github.com/WPMedia/site-components/issues/584). The discussion topic was "Should we move to a new CSS Framework?" Many commented on loving our flavor of Tachyons and how it lends itself to rapid development especially for visual storytelling. However some commented that we should try a CSS-in-JS solution for our components.
+
+---
+
+## Supporting Community
+
+The discussion continued with a few more comments and we decided to move forward with Stitches as our CSS-in-JS solution. We are still committed to supporting Tachyons for the community. We are going to add our Tokens (Theming!) to Tachyons. It's on our roadmap! Although what we realized during that discussion, we want to explore supporting other CSS frameworks for our commmunity like Tailwind, Styled Components, Emotion, etc by leveraging our Tokens.
+
+---
+
+## Non-negotiables
+
+The open discussion helped us form our non-negotiables for our CSS solution for WPDS.
+
+- Download only used CSS to the browser
+- Server side rendering
+- Developer experience, fully typed APIs
+- Built in API for components/variants
+- Built in API for theming
+- Using CSS Properties for theming, extensiblity and customization
+
+---
+
+## Stitches - Ahead of the Curve
+
+Stitches checked all of those boxes!
+
+---
+
+## Further Reading
+
+- [https://stitches.dev/docs/introduction](https://stitches.dev/docs/introduction)
+- [https://stitches.dev/blog/introducing-stitches](https://stitches.dev/blog/introducing-stitches)
+- [https://ped.ro/writing/why-i-build-design-systems-with-stitches-and-radix](https://ped.ro/writing/why-i-build-design-systems-with-stitches-and-radix)
+- [https://ped.ro/writing/variant-driven-components](https://ped.ro/writing/variant-driven-components)
+- [Stitches demo with Lee Robinson](https://www.youtube.com/watch?t=1471&v=Gw28VgyKGkw&feature=youtu.be)

@@ -1,0 +1,77 @@
+---
+title: "Automated testing tools"
+description: "Useful for catching some (but not all) issues"
+sourceUrl: "https://build.washingtonpost.com/resources/accessibility/automated-testing"
+---
+
+# Automated testing tools
+
+---
+
+## Intro
+
+Automated testing is generally believed to catch around 30-50 percent of accessibility issues on a page. They are a useful tool in achieving accessibility, but they are not sufficient for full testing. Below are some automated testing tools that we use at The Post.
+
+---
+
+## WAVE Evaluation Tool (Google Chrome extension)
+
+WebAIM's [WAVE Evaluation Tool extension](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh?hl=en-US) provides an interactive testing suite that is a good starting point for automated accessibility testing. There is [a video guide to using WAVE](https://www.youtube.com/watch?v=ITUDiTgAZY0), but we'll go over the basics here as well.
+
+After installing, select the puzzle piece icon in the top right of the Chrome browser and select the tool from the dropdown, as shown below.
+
+![](https://build.washingtonpost.com/images/wave-step-one.png)
+
+Selecting the tool will open a menu if errors, alerts and other notices on the page. The interactive visual experience makes WAVE helpful for beginners.
+
+![](https://build.washingtonpost.com/images/wave-step-two.png)
+
+Click on the icons that appear throughout the page to understand what each is signaling.
+
+**WAVE should always be used alongside the axe DevTools described below. Don't rely on only one tool or the either. Use both.**
+
+---
+
+## axe DevTools (Google Chrome extension)
+
+Install the [axe DevTools extension](https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US). There is [a video guide to using the axe DevTools](https://www.youtube.com/watch?v=iRGB40c_YJc&t=36s), but we'll go over the basics here as well.
+
+To test a page with the axe DevTools, open the developer tools in Chrome and select axe DevTools in the console dropdown, as shown below.
+
+![](https://build.washingtonpost.com/images/axe-dev-tools-step-one.png)
+
+Once in the axe DevTools menu, you can select "scan ALL of my page."
+
+![](https://build.washingtonpost.com/images/axe-dev-tools-step-two.png)
+
+Finally, you will receive a list of errors on the page that you can expand to view. You can even see where in the page HTML the error occurs. This is very useful for catching and fixing issues.
+
+![](https://build.washingtonpost.com/images/axe-dev-tools-step-three.png)
+
+---
+
+## axe-core testing library
+
+In addition to the Chrome extension, the axe testing suite is available in [a set of npm packages](https://github.com/dequelabs/axe-core-npm) so that you can configure the tests to run automatically.
+
+Each package has more details in its README on how the package is used.
+
+We also recommend [jext-axe](https://github.com/nickcolley/jest-axe) for unit testing, though it is not part of the axe-core library.
+
+---
+
+## Linting with jsx-a11y
+
+Pair the axe-core npm packages with the [eslint-plugin-jsx-a11y npm package](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) to improve your automated testing.
+
+Per the package's developers: "This plugin does a static evaluation of the JSX to spot accessibility issues in React apps. Because it only catches errors in static code, use it in combination with [@axe-core/react](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/react) to test the accessibility of the rendered DOM. Consider these tools just as one step of a larger a11y testing process and always test your apps with assistive technology."
+
+The jsx-a11y developers provide [a list of everything covered by jsx-a11y's automated checks](https://www.npmjs.com/package/eslint-plugin-jsx-a11y#user-content-supported-rules).
+
+---
+
+## Storybook automated tests
+
+Storybook is a valuable tool for viewing your components in isolation and conducting testing.
+
+We recommend reading [the Storybook accessibility docs](https://storybook.js.org/docs/react/writing-tests/accessibility-testing) for more information.

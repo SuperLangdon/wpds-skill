@@ -1,0 +1,65 @@
+---
+title: "Zeplin Guide"
+description: "Zeplin is our tool of choice when it comes to hand-off. It offers a layer of connection to code and design not yet realized by other tools."
+sourceUrl: "https://build.washingtonpost.com/resources/guides/zeplin-guide"
+---
+
+# Zeplin Guide
+
+---
+
+## Getting started
+
+### Requesting access
+
+If you are a Washington Post employee, please submit a SAR to access our Zeplin Product & Design workspace. If you are not a post-employee and want to use Zeplin in your suite, please reference our Figma file to upload and create your style guide.
+
+### Creating a Zeplin project
+
+<!-- Box: interactive component, rendered on the official site only -->
+
+### Connecting WPDS Styleguide
+
+<!-- Box: interactive component, rendered on the official site only -->
+
+### Connected Components
+
+By linking the style guide you unlock our connected compoents. Selecting a component connected to code in Zeplin will reveal a code snippet and the props chosen for the component variant. This happens when you use our Figma Ui Kit components!
+
+![In this example the properties reveal taht 32 was selected for the prop `size`](https://build.washingtonpost.com/img/guides/zeplin/connected.png)
+
+*In this example the properties reveal taht 32 was selected for the prop `size`*
+
+#### Properties
+
+We do our best to ensure that our Figma API that translates to Zeplin properties matches as close to 1:1 of the actual coded component. However, you might find some properties like states that are not in the coded component; this is due to the nature of Figma. In those instances, you can ignore it unless otherwise documented.
+
+---
+
+## Extension
+
+### Getting WPDS Extension
+
+Zeplin supports a good amount of tokens; there are some limitations in how some tokens are managed or not managed at all. Right not the current tokens managed by Zeplin is only color. We chose not to manage typestyles; instead, we highlight individual tokens font size, font, line height using our extension. We also manage tokens like border radius and shadows using our extension.
+
+#### Installing the extension
+
+Select the project in Zeplin you would like to add the extension to and then select extension \> explore extensions \> add WPDS Tokens.
+
+<!-- Box: interactive component, rendered on the official site only -->
+
+#### Typography tokens
+
+To reveal the typography tokens, select a text layer to have the extension show the properties of that text.
+
+![](https://build.washingtonpost.com/img/guides/zeplin/text_tokens.png)
+
+#### Border radius and shadows
+
+To reveal the border radius or shadow, select a layer with a border radius or shadow, and the extension will show the corresponding tokens.
+
+![](https://build.washingtonpost.com/img/guides/zeplin/shadow_border.png)
+
+#### Token syntax
+
+Note that all tokens will display in stitches token string format by adding a $. Stitches is our default styling framework for our system, but if you need to refer to the token, drop the $.

@@ -1,0 +1,58 @@
+---
+title: "Visually Hidden"
+description: "A common pattern used in web applications is to hide content from sighted users but still maintain it for screen readers."
+sourceUrl: "https://build.washingtonpost.com/components/visually-hidden"
+---
+
+# Visually Hidden
+
+## Options
+
+###
+
+VisuallyHidden accepts `props.children` to set the label.
+
+```jsx
+return function Example() {
+  return (
+    <>
+      <span>
+        Tab into this element to see VisuallyHidden used for a "Skip link"
+        feature.
+      </span>
+      <VisuallyHidden
+        as="a"
+        href="#hello-world"
+        css={{
+          color: "$cta",
+        }}
+        data-testid="skip-link"
+      >
+        This is a visually hidden label
+      </VisuallyHidden>
+    </>
+  );
+}
+```
+
+---
+
+## Accessibility
+
+Visually hides an element from sighted users but still maintains it for screen readers and other assistive technologies. This is a common pattern used in web applications.
+
+---
+
+## Implementation
+
+```jsx
+<VisuallyHidden>My important label for screen readers</VisuallyHidden>
+```
+
+## Props
+
+#### VisuallyHidden
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `as` | `never` | No | — | WPDS provides an as prop for changing which tag a component outputs. |
+| `css` | `CSS<{ sm: `(max-width: ${string})`; md: `(min-width: calc(${string} + 1px)) and (max-width: ${string})`; lg: `(min-width: calc(${string} + 1px)) and (max-width: ${string})`; xl: `(min-width: calc(${string} + 1px)) and (max-width: ${string})`; xxl: `(min-width: calc(${string} + 1px)) and (max-width: ${string})`; notS...` | No | — | WPDS provides a css prop for overriding styles easily. It’s like the style attribute, but it supports tokens, media queries, nesting and token-aware values. All WPDS Components include a css prop. Use it to pass in overrides. |

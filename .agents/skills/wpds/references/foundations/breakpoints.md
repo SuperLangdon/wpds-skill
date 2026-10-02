@@ -1,0 +1,199 @@
+---
+title: "Breakpoints"
+sourceUrl: "https://build.washingtonpost.com/foundations/breakpoints"
+---
+
+# Breakpoints
+
+WPDS has 5 breakpoints with the following values
+
+- **sm**: 768px
+- **md**: 900px
+- **lg**: 1024px
+- **xl**: 1280px
+- **xxl**: 1440px
+
+<!-- Breakpoints: interactive component, rendered on the official site only -->
+
+## WPDS Media At-Rules
+
+| Name | Value | Description |
+| --- | --- | --- |
+| sm | (max-width: 767px) | Targets the small breakpoint only |
+| md | (min-width: 768px) and (max-width: 899px) | Targets the medium breakpoint only |
+| lg | (min-width: 900px) and (max-width: 1023px) | Targets the large breakpoint only |
+| xl | (min-width: 1024px) and (max-width: 1279px) | Targets the extra-large breakpoint only |
+| xxl | (min-width: 1280px) and (max-width: 1440px) | Targets the extra-extra-large breakpoint only |
+| minSm, notSm | (min-width: 768px) | A "mobile first" style breakpoint that targets the small breakpoint and above |
+| minMd, notMd | (min-width: 900px) | A "mobile first" style breakpoint that targets the medium breakpoint and above |
+| minLg, notLg | (min-width: 1024px) | A "mobile first" style breakpoint that targets the large breakpoint and above |
+| minXl, notXl | (min-width: 1280px) | A "mobile first" style breakpoint that targets the extra-large breakpoint and above |
+| minXxl, notXxl | (min-width: 1441px) | A "mobile first" style breakpoint that targets the extra-extra-large breakpoint and above |
+| maxSm | (max-width: 767px) | A "desktop first" style breakpoint that targets the small breakpoint and below |
+| maxMd | (max-width: 900px) | A "desktop first" style breakpoint that targets the medium breakpoint and below |
+| maxLg | (max-width: 1024px) | A "desktop first" style breakpoint that targets the large breakpoint and below |
+| maxXl | (max-width: 1280px) | A "desktop first" style breakpoint that targets the extra-large breakpoint and below |
+| maxXxl | (max-width: 1441px) | A "desktop first" style breakpoint that targets the extra-extra-large breakpoint and below |
+
+## Using Rules
+
+### Responsive Variants
+
+Stitches recommends defining variants [that are applied responsively](https://stitches.dev/docs/responsive-styles#responsive-variants) to keep component styles immutable.
+
+```jsx
+return function Example() {
+  const MenuButton = styled(Button, {
+    variants: {
+      hidden: {
+        true: {
+          display: "none",
+        },
+        false: {
+          display: "inline-block",
+        },
+      },
+    },
+  });
+
+  const Container = styled("div", {
+    display: "flex",
+    justifyContent: "space-between",
+    backgroundColor: theme.colors.secondary,
+    boxShadow: theme.shadows["200"],
+    color: theme.colors.onSecondary,
+    padding: theme.space["100"],
+    width: "150px",
+    height: "150px",
+  });
+
+  const Row = styled("div", {
+    display: "flex",
+    gap: theme.space["100"],
+  });
+
+  return (
+    <div>
+      <p>Show a menu button below the medium breakpoint</p>
+      <Row>
+        <Container>
+          Mobile first
+          <MenuButton
+            icon="center"
+            hidden={{ "@initial": false, "@notMd": true }}
+          >
+            <Icon>
+              <Menu />
+            </Icon>
+          </MenuButton>
+        </Container>
+        <Container>
+          Desktop first
+          <MenuButton
+            icon="center"
+            hidden={{ "@initial": true, "@maxMd": false }}
+          >
+            <Icon>
+              <Menu />
+            </Icon>
+          </MenuButton>
+        </Container>
+      </Row>
+    </div>
+  );
+}
+```
+
+### Breakpoints in Style Objects
+
+While not recommended it is possible to use breakpoints inline
+
+```jsx
+export default function Example() {
+  const MenuButtonMobile = styled(Button, {
+    "@notMd": {
+      display: "none",
+    },
+  });
+
+  const MenuButtonDesktop = styled(Button, {
+    display: "none",
+    "@maxMd": {
+      display: "inline-block",
+    },
+  });
+
+  const Container = styled("div", {
+    display: "flex",
+    justifyContent: "space-between",
+    backgroundColor: theme.colors.secondary,
+    boxShadow: theme.shadows["200"],
+    color: theme.colors.onSecondary,
+    padding: theme.space["100"],
+    width: "150px",
+    height: "150px",
+  });
+
+  const Row = styled("div", {
+    display: "flex",
+    gap: theme.space["100"],
+  });
+
+  return (
+    <div>
+      <p>Show a menu button below the medium breakpoint</p>
+      <Row>
+        <Container>
+          Mobile first
+          <MenuButtonMobile icon="center">
+            <Icon>
+              <Menu />
+            </Icon>
+          </MenuButtonMobile>
+        </Container>
+        <Container>
+          Desktop first
+          <MenuButtonDesktop icon="center">
+            <Icon>
+              <Menu />
+            </Icon>
+          </MenuButtonDesktop>
+        </Container>
+      </Row>
+    </div>
+  );
+}
+```
+
+### Using the Responsive Screen Size React Hook
+
+The `useResponsiveScreenSize` hook can be used to get the current screen size and use it in your components.
+
+> The hook is only available in the browser and will return `unknown` on the server.
+
+#### An example using the hook
+
+Our Spectrum render engine uses the hook to render a drawer on small screens and a dialog on larger screens. This is a simplified version of the code used in the Spectrum render engine.
+
+```jsx
+import {
+  useResponsiveScreenSize,
+  screenSizesEnums,
+  Dialog,
+  Drawer,
+} from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  const screenSize = useResponsiveScreenSize();
+
+  return (
+    <div>
+      {screenSize === screenSizesEnums.small ? (
+        <Drawer>{/* Drawer content */}</Drawer>
+      ) : (
+        <Dialog>{/* Dialog content */}</Dialog>
+      )}
+    </div>
+  );
+}
+```

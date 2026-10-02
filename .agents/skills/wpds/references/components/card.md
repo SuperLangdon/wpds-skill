@@ -1,0 +1,243 @@
+---
+title: "Card"
+description: "Single, contained unit designed to hold other related elements and/or components."
+sourceUrl: "https://build.washingtonpost.com/components/card"
+---
+
+# Card
+
+## Anatomy
+
+![Note: Image is not  to scale](https://build.washingtonpost.com/img/components/card/anatomy.svg)
+
+*Note: Image is not  to scale*
+
+1. Border
+2. Content
+
+---
+
+## Options
+
+Although a card defaults to the size of container it resides in, the dimensions and layout of a card depend entirely on its contents. Use the `css` property to designate styling for your specific needs.
+
+---
+
+## Guidance
+
+### Group content
+
+Cards are a greate way to group related content together.
+
+```jsx
+return function Example() {
+  const StyledText = styled("p", {
+    overflow: "wrap",
+    width: "100px",
+  });
+  const Container = styled({
+    padding: theme.space["100"],
+  });
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        flexWrap: "wrap",
+        gap: "$100",
+      }}
+    >
+      <ul style={{ display: "flex", listStyleType: "none" }}>
+        <li style={{ marginRight: "10px" }}>
+          <Card
+            css={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+              padding: "0",
+              maxWidth: "211px",
+            }}
+          >
+            <img
+              height="140"
+              width="210"
+              layout="fixed"
+              alt="Vibrant quinoa bowl with carrots, tomatoes, and cucumbers"
+              src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"
+            />
+            <Container>
+              <StyledText>
+                How Saria makes ready-to-eat <a href="">quinoa bowls</a> with
+                lots of veggies.
+              </StyledText>
+            </Container>
+          </Card>
+        </li>
+        <li>
+          <Card
+            css={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+              padding: "0",
+              maxWidth: "211px",
+            }}
+          >
+            <img
+              height="140"
+              width="210"
+              layout="fixed"
+              alt="Pad thai plated with atop a green tablecloth."
+              src="https://images.pexels.com/photos/12481161/pexels-photo-12481161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            />
+            <Container>
+              <StyledText>
+                This <a href="">pad thai</a> with chicken and shrimp only takes
+                15 minutes to prepare!
+              </StyledText>
+            </Container>
+          </Card>
+        </li>
+      </ul>
+    </Box>
+  );
+}
+```
+
+### An empty box with infinite possibilities
+
+Cards can hold virtually any combination of elements/components. Mix and match to create a contained experience.
+
+```jsx
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        flexWrap: "wrap",
+        gap: "$100",
+      }}
+    >
+      <Card
+        css={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          padding: "0",
+          width: "300px",
+        }}
+      >
+        <h4>Weeknight Ramen Bowls</h4>
+        <Accordion.Root type={ACCORDION_TYPE.single} collapsible={true}>
+          <Accordion.Item value={"item-1"}>
+            <Accordion.Trigger css={{ padding: "$100" }}>
+              View the recipe
+            </Accordion.Trigger>
+            <Accordion.Content css={{ padding: "$100" }}>
+              Step 1 Add one cup of water to a medium pot and bring to a boil.
+              Add the coconut milk, noodles, green beans and peanut butter, if
+              using, and cook, stirring now and then, for about 3 minutes. Step
+              2 Remove from the heat and add the curry powder and half of the
+              spice mix from the ramen packet and stir until fully dissolved,
+              about 1 minute. (Discard the remaining spice mix.) Transfer the
+              ramen and its broth to a large bowl and place the cheese on top.
+              Dust with more curry powder and serve.
+            </Accordion.Content>
+          </Accordion.Item>
+        </Accordion.Root>
+      </Card>
+    </Box>
+  );
+}
+```
+
+### Test how it scales
+
+Cards can hold so many elements/components, but with that freedom comes the responsibility of testing the responsiveness of the card.
+
+```jsx
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        flexDirection: "column",
+        flexWrap: "wrap",
+        alignItems: "center",
+        gap: "$100",
+        padding: "$100",
+        paddingTop: "$200",
+      }}
+    >
+      <Card
+        css={{
+          display: "flex",
+          alignItems: "center",
+          gap: "$100",
+          padding: "0",
+        }}
+      >
+        <img
+          height="110"
+          width="auto"
+          layout="fixed"
+          alt="Vibrant quinoa bowl with carrots, tomatoes, and cucumbers"
+          src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"
+        />
+        <p>
+          Yummy weeknight <a href="">quinoa bowl</a>
+        </p>
+      </Card>
+      <Card
+        css={{
+          display: "flex",
+          alignItems: "center",
+          gap: "$100",
+          maxWidth: "200px",
+          padding: "0",
+        }}
+      >
+        <img
+          height="110"
+          width="auto"
+          layout="fixed"
+          alt="Vibrant quinoa bowl with carrots, tomatoes, and cucumbers"
+          src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"
+        />
+        <p>
+          Yummy weeknight <a href="">quinoa bowl</a>
+        </p>
+      </Card>
+    </Box>
+  );
+}
+```
+
+---
+
+## Accessibility
+
+### Use list
+
+Use unordered lists and list items for cards in a collection. This allows screen readers to parse the items as a list. The order of elements inside a card should be logical, and each interactive element should have an apparent hover state.
+
+---
+
+## API Reference
+
+## Props
+
+#### Card
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `children` | `ReactNode` | No | — | The nested elements inside Card |
+| `css` | `{} & { alignContent?: AlignContent \| ScaleValue \| Globals \| Index; alignItems?: AlignItems \| ScaleValue \| Globals \| Index; ... 426 more ...; vectorEffect?: VectorEffect \| ... 2 more ... \| Index; } & ... 7 more ... & { ...; }` | No | — | WPDS provides a css prop for overriding styles easily. It’s like the style attribute, but it supports tokens, media queries, nesting and token-aware values. All WPDS Components include a css prop. Use it to pass in overrides. |
+
+```jsx
+``
+```

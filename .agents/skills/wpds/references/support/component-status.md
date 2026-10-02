@@ -1,0 +1,33 @@
+---
+title: "Component status"
+description: "The life cycle of our component on our doc site after designs have been finalized has 4 phases 3 of which are indicated by a visible status. This support guide will define each status and how it relates to the usage of the component."
+sourceUrl: "https://build.washingtonpost.com/support/component-status"
+---
+
+# Component status
+
+**Coming soon**
+
+This status indicates that the component designs have been finalized and the component is currently under development. This status only appears on the sidebar of our navigation.
+
+---
+
+**Alpha**
+
+This status indicates that the component is available via code, but BREAKING CHANGES can be expected and the documentation is still in refinement. That would mean that guidance can change, code examples might change and content can be corrected, rephrased and/or removed.
+
+This status will appear as a banner on the component documentation page.
+
+---
+
+**Beta**
+
+This status indicates that the component design + documentation is finalized and it is available via code. Additive changes may still occur but no breaking changes will occur unless a security fix is needed.
+
+This status will appear as a banner on the component documentation page.
+
+---
+
+#### Stable
+
+If no status is shown on the component it indicates the component has reached a stable state. Any changes that occur to the component will be communicated far ahead of their implementation.
